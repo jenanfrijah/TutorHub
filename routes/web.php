@@ -2,18 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/students', function () {
+    return view('students');
 });
 
-Route::get('/dashboard',function(){
+Route::get('/subjects', function () {
+    return view('subjects');
+});
+
+Route::get('/grades', function () {
+    return view('grades');
+});
+
+Route::get('/tutors', function () {
+    return view('tutors');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/form',function(){
-    return view('form');
-});
-
-Route::get('/table',function(){
-    return view('table');
-});
