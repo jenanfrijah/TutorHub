@@ -1,10 +1,10 @@
-@extends('layouts.admin')
-@section ('title',' Subjects Table')
+@extends('layouts.tutor')
+@section('title','Subjects Table')
 @section('content')
   <div class="container-fluid px-4">
                         <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Subjects Table</li>
                         </ol>
                         <div class="card mb-4">
@@ -12,9 +12,9 @@
                         <div class="card mb-4">               
       <div class="card-header d-flex justify-content-between align-items-center">
         <span></span>
-        <button class="btn btn-success ms-5" data-bs-toggle="modal" data-bs-target="#addModal">
-            <i class="fas fa-plus"></i> Add Subject
-        </button>
+           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+  <i class="fas fa-plus"></i> Add New Subject
+</button>
         </div>
          <div class="card-body">
                                 <table id="datatablesSimple" border="1" cellpadding="8" width="100%">
@@ -88,14 +88,16 @@
                      </div>
                     </div>
                 </div>
-
-  <div class="modal fade" id="deleteModal" tabindex="-1">
+<!-- Delete Subject Modal -->
+ <div class="modal fade" id="deleteModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <div class="modal-header">
         <h5 class="modal-title">Confirm Delete</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
       <div class="modal-body">
@@ -103,19 +105,19 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Cancel
         </button>
         <button type="button" class="btn btn-danger">
           Yes, Delete
         </button>
       </div>
-      
 
     </div>
   </div>
-</div>   
+</div>
 
+<!-- Edit Subject Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -148,32 +150,31 @@
     </div>
   </div>
 </div>
-    <!-- Add Subject Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Add New Subject</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="addSubjectForm">
-                        <div class="mb-3">
-                            <label for="subject_name" class="form-label">Subject Name</label>
-                            <input type="text" name="name" id="subject_name" class="form-control" placeholder="Enter subject name" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" form="addSubjectForm" class="btn btn-success">Add Subject</button>
-                </div>
-            </div>
-        </div>
+
+<!-- Add Subject Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Add New Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addSubjectForm">
+          <div class="mb-3">
+            <label for="subject_name" class="form-label">Subject Name</label>
+            <input type="text" name="name" id="subject_name" class="form-control" placeholder="Enter Subject name" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" form="addSubjectForm" class="btn btn-success">Add Subject</button>
+      </div>
     </div>
+  </div>
+</div>
 @endsection
 
-@section('script')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>

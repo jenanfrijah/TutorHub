@@ -23,7 +23,7 @@
       <ul class="navbar-nav bg-gradient-purple sidebar sidebar-dark accordion"  id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dashboard')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.dashboard')}}">
                 <div class="sidebar-brand-icon rotate-n-15">  
                 <i class="fas fa-graduation-cap"></i>
                 </div>
@@ -35,7 +35,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/dashboard')}}">
+                <a class="nav-link" href="{{route('admin.dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -46,7 +46,7 @@
         
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/students')}}">
+                <a class="nav-link" href="{{route('admin.students')}}">
                     <i class="fas fa-fw fa-user-graduate"></i>
                     <span>Students Table</span></a>
             </li>
@@ -55,7 +55,7 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('/tutors')}}">
+                <a class="nav-link" href="{{route('admin.tutors')}}">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Tutors Table</span></a>
             </li>
@@ -63,7 +63,7 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('/subjects')}}">
+                <a class="nav-link" href="{{route('admin.subjects')}}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Subjects Table</span></a>
             </li>
@@ -71,7 +71,7 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('/grades')}}">
+                <a class="nav-link" href="{{route('admin.grades')}}">
                    <i class="fas fa-fw fa-chart-line"></i>
                     <span>Grades Table</span></a>
             </li>
@@ -79,7 +79,7 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('/logout')}}">
+                <a class="nav-link" href="{{url('admin/logout')}}">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
@@ -106,13 +106,26 @@
             </footer>
       </div>  
        </div> 
-     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-     <!-- Core plugin JavaScript-->
-    <script src="{{ asset('assets/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
+
+<!-- jQuery -->
+<script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
+
+<!-- Bootstrap 4 Bundle -->
+<script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- jQuery Easing -->
+<script src="{{ asset('assets/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- SB Admin core -->
+<script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
+<!-- Chart.js -->
+<script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Demo scripts for charts -->
+<script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('assets/admin/js/demo/chart-bar-demo.js') }}"></script>
+<script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>
+
 
 </body>
 </html>
