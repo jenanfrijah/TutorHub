@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Request;
 
 
 class User extends Authenticatable
@@ -18,10 +19,14 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
+   protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
+        'phone',
+        'location',
+        'profile_image',
     ];
 
     /**
@@ -29,7 +34,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $hidden = [
+   protected $hidden = [
         'password',
         'remember_token',
     ];
@@ -39,15 +44,21 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+   protected $casts = [
+    'email_verified_at' => 'datetime',
+    'password' => 'hashed',
+];
+
 
     public function tutor(){
         return $this->hasOne(Tutor::class);
     }
+
+    public function requests(){
+        return $this->hasMany(Request::class,'student_id');
+            }
+
+        public function reviews(){
+        return $this->hasMany(Review::class,'student_id');
+            }
 }

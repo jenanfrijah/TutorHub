@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>   
-    @if(session('success'))
+@if(session('success'))
 <p>{{ session('success') }}</p>
 @endif
 <h1>Add New Subject</h1>

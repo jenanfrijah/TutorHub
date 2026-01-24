@@ -14,6 +14,7 @@
 }
 
     </style>
+    @yield('styles')
 </head>
 <body>
       <div id="wrapper">
@@ -22,7 +23,7 @@
       <ul class="navbar-nav bg-gradient-purple sidebar sidebar-dark accordion"  id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('tutor.profile')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('tutor.tutor_profile')}}">
                 <div class="sidebar-brand-icon ">  
                 <i class="fa fa-chalkboard-teacher"></i>
                 </div>
@@ -36,7 +37,7 @@
         
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('tutor.profile')}}">
+                <a class="nav-link" href="{{route('tutor.tutor_profile')}}">
                     <i class="fa fa-user"></i>
                     <span>My Profile</span></a>
             </li>
@@ -53,7 +54,7 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{route('tutor.subjects')}}">
+                <a class="nav-link" href="{{ route('tutor.subjects', auth()->user()->tutor->id ) }}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>My Subjects </span></a>
             </li>
@@ -87,7 +88,8 @@
                 </div>
             </footer>
       </div>  
-       </div> 
+      </div>  
+      
 
 <!-- jQuery -->
 <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -107,7 +109,7 @@
 <script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('assets/admin/js/demo/chart-bar-demo.js') }}"></script>
 <script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>
-
+   @yield('scripts')
 
 </body>
 </html>
