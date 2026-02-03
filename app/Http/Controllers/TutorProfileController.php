@@ -32,20 +32,12 @@ public function create(Request $request)
         return redirect()->back()->with('error', 'You must create a Tutor profile first.');
     }
 
-  
-    $subject = Subject::where('name', $validated['name'])->first();
-
-
-    if (!$subject) {
+   
         $subject = Subject::create([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
         ]);
-    }
-
-    if ($tutor->subjects()->where('subject_id', $subject->id)->exists()) {
-        return redirect()->back()->with('error', 'You already teach this subject!');
-    }
+    
 
 
     $tutor->subjects()->attach($subject->id, [
@@ -119,10 +111,10 @@ public function showSubject(Subject $subject)
 {
     $subject->load('tutors.user'); 
 
-      $grades = $subject->tutors->pluck('pivot.grade'); 
-
-    return view('home.course_details', compact('subject', 'grades'));
+    return view('home.course_details', compact('subject'));
 }
+
+
 
 
 }

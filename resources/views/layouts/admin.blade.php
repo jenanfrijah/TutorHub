@@ -15,6 +15,7 @@
 }
 
     </style>
+    @yield('styles')
 </head>
 <body id="page-top"> 
     <div id="wrapper">
@@ -60,7 +61,7 @@
                     <span>Tutors Table</span></a>
             </li>
 
-            <hr class="sidebar-divider my-0">
+            {{-- <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.subjects')}}">
@@ -74,14 +75,20 @@
                 <a class="nav-link" href="{{route('admin.grades')}}">
                    <i class="fas fa-fw fa-chart-line"></i>
                     <span>Grades Table</span></a>
-            </li>
+            </li> --}}
 
-            <hr class="sidebar-divider my-0">
-
+            {{-- <hr class="sidebar-divider my-0"> --}}
+         
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/logout')}}">
-                    <i class="fas fa-fw fa-sign-out-alt"></i>
-                    <span>Logout</span></a>
+                      @auth
+                <!-- Logout -->
+                <form method="POST" class="nav-link" action="{{ route('logout') }}">
+                    @csrf
+                     <button type="submit" class="nav-link bg-transparent border-0 p-0 m-0 text-start">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+                </form>
+            @endauth
             </li>
             </ul>
           <!-- Content Wrapper Start -->
@@ -107,6 +114,7 @@
       </div>  
        </div> 
 
+
 <!-- jQuery -->
 <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
 
@@ -126,6 +134,7 @@
 <script src="{{ asset('assets/admin/js/demo/chart-bar-demo.js') }}"></script>
 <script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>
 
+@yield('scripts')
 
 </body>
 </html>

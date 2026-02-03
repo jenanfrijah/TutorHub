@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tutor_id')->constrained('tutors')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
-            $table->tinyInteger('rating');
+            $table->tinyInteger('rating')->nullable();//nullable not included in migration yet
             $table->text('feedback');
             $table->timestamps();
         });

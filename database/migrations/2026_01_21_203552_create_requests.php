@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->nullable()->constrained('grades')->onDelete('cascade');
             $table->datetime('proposed_datetime');
             $table->text('notes')->nullable();
-            $table->enum('status',['pending','accepted','rejected','paid'])->default('pending'); 
+            $table->enum('status',['pending','accepted','rejected','paid','completed','reviewed'])->default('pending'); 
             $table->timestamps();
         });
     }

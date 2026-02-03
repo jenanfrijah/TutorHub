@@ -249,8 +249,8 @@ color: var(--accent-color) ;
                     </div> --}}
 
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password</label> <input type="text" id="job" name="password" placeholder="" onblur="validate(5)"> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Confirm Password</label> <input type="text" id="job" name="password_confirmation" placeholder="" onblur="validate(5)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password</label> <input type="password" id="job" name="password" placeholder="" onblur="validate(5)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Confirm Password</label> <input type="password" id="job" name="password_confirmation" placeholder="" onblur="validate(5)"> </div>
                     </div>
 
                     <div class="row justify-content-end">

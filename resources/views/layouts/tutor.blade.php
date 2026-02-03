@@ -62,9 +62,15 @@
             <hr class="sidebar-divider my-0">
 
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/logout')}}">
-                    <i class="fas fa-fw fa-sign-out-alt"></i>
-                    <span>Logout</span></a>
+                      @auth
+                <!-- Logout -->
+                <form method="POST" class="nav-link" action="{{ route('logout') }}">
+                    @csrf
+                     <button type="submit" class="nav-link bg-transparent border-0 p-0 m-0 text-start">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+                </form>
+            @endauth
             </li>
             </ul>
           <!-- Content Wrapper Start -->

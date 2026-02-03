@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title','Sign Up')
+@section('title','Login')
 @section('styles')
  <style>
     body{
@@ -211,6 +211,9 @@ color: var(--accent-color) ;
 
             <form method="POST" action="{{ route('login') }}" class="form-card text-left">
              @csrf
+              @if(request()->has('redirect'))
+        <input type="hidden" name="redirect" value="{{ request()->get('redirect') }}">
+    @endif
             <div class="form-group mb-3">
     <label for="email">Email </label>
     <input type="email" name="email" value="{{ old('email') }}" required autofocus class="form-control" id="email" placeholder="Enter your email">

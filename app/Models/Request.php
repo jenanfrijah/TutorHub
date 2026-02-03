@@ -19,6 +19,7 @@ class Request extends Model
         'proposed_datetime',
         'notes',
         'status',
+        'price',
     ];
 
 public function student(){
@@ -37,7 +38,12 @@ public function grade(){
     return $this->belongsTo(Grade::class,'grade_id');
 }
 
+public function review()
+{
+    return $this->hasOne(Review::class, 'request_id');
+}
 
 }
+
 
 

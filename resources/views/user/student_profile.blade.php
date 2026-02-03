@@ -42,22 +42,13 @@
             <div class="e-profile">
               <div class="row">
                 <div class="col-8 col-sm-auto mb-3">
-                  <div class="mx-auto" style="width: 140px;">
-                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
-                    </div>
-                  </div>
+            
                 </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                 <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap" >{{auth()->user()->name}}</h4>
                     <p class="mb-0">{{auth()->user()->email}}</p>
-                    <div class="mt-2">
-                      <button class=" btn btn-purple " type="button">
-                        <i class="fa fa-fw fa-camera"></i>
-                        <span>Change Photo</span>
-                      </button>
-                    </div>
+                
                   </div>
                   <div class="text-center text-sm-right">
                     <span class="badge badge-secondary">administrator</span>
@@ -129,9 +120,6 @@
                     </div>
                       </form>
 
-  @if (session('status') === 'password-updated')
-  <div class="alert alert-success">Password updated successfully.</div>
-@endif
 
 <form method="POST" action="{{ route('password.update') }}">
     @csrf

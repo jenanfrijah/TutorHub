@@ -219,6 +219,9 @@ color: var(--accent-color) ;
 
                 <form method="POST" action="{{ route('user.register_student') }}" enctype="multipart/form-data"  >
                       @csrf
+                      @if(request()->has('redirect'))
+        <input type="hidden" name="redirect" value="{{ request()->get('redirect') }}">
+                @endif
                     <div class="col d-flex justify-content-center text-left">
                            <div class="col-sm-11">
                         <div class="form-group flex-column d-flex"> <label class="form-control-label px-3">Full Name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="name" placeholder="Sarah Ahmad" onblur="validate(1)"> </div>

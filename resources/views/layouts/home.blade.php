@@ -30,6 +30,27 @@
     <!-- Page Specific Styles -->
     @yield('styles')
 
+
+    <style>
+    .dropdown {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dropdown-item:hover{
+    background-color:  #4C1D95 !important;
+    color: #ffffff !important;
+}
+
+.dropdown-item {
+    background: none !important;
+    border: none ;
+    width: 100%;
+    color: #000 !important;
+    text-align: left;
+}
+
+    </style>
     @livewireStyles
 </head>
 <body>
@@ -49,12 +70,7 @@
                 <li><a href="{{ route('home.index') }}">Home</a></li>
                 <li><a href="{{ route('home.about') }}">About</a></li>
                 <li><a href="{{ route('home.tutors') }}">Tutors</a></li>
-                <li><a href="{{ route('home.subjects') }}">Subjects</a></li>
-
-                @auth
-                    <li><a href="{{ route('user.student_profile') }}" class="{{ Request::is('user/student_profile*') ? 'active' : '' }}">Profile</a></li>
-                    <li><a href="{{ route('user.student_requests') }}" class="{{ Request::is('user/student_requests*') ? 'active' : '' }}">My Requests</a></li>
-                @endauth
+                {{-- <li><a href="{{ route('home.subjects') }}">Subjects</a></li> --}}
 
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
             </ul>
@@ -67,13 +83,39 @@
                 <a class="btn-getstarted" href="{{ route('user.register_student') }}">Sign Up</a>
             @endguest
 
-            @auth
-                <!-- Logout -->
-                <form method="POST" action="{{ route('logout') }}">
+
+         
+               @auth
+    <li class="dropdown">
+        <a href="#"  data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
+            <i class="bi bi-chevron-down ms-1"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a class="dropdown-item {{ request()->routeIs('user.student_profile') ? 'active' : '' }}" 
+                   href="{{ route('user.student_profile') }}">
+                    <i class="bi bi-person"></i> Profile
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item {{ request()->routeIs('user.student_requests') ? 'active' : '' }}" 
+                   href="{{ route('user.student_requests') }}">
+                    <i class="bi bi-file-text"></i> My Requests
+                </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn-getstarted">Logout</button>
+                    <button type="submit" class="dropdown-item">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
                 </form>
-            @endauth
+            </li>
+        </ul>
+    </li>
+@endauth
         </div>
 
         <!-- Mobile Toggle -->

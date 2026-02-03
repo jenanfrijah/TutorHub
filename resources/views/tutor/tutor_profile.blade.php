@@ -109,7 +109,7 @@ label {
             <div class="d-flex align-items-start py-3 border-bottom">
                 <img src="{{ $user->profile_image 
                              ? asset('storage/profile_images/' . $user->profile_image) 
-                             : asset('assets/home/img/team/team-1.jpg') }}" 
+                             : asset('storage/profile_images/profile.jpg') }}" 
                      class="img" 
                      alt="Profile Photo"
                      id="preview-image">

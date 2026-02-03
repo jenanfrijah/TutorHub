@@ -29,15 +29,11 @@ class ProfileController extends Controller
     $user = $request->user();
 
     $validated = $request->validated();
-    unset($validated['profile_image']);
+   
 
     $user->fill($validated); 
 
-    if ($request->hasFile('profile_image')) {
-     
-        $path = $request->file('profile_image')->store('profile_images', 'public');
-        $user->profile_image = $path; 
-    }
+   
 
     if ($user->isDirty('email')) {
         $user->email_verified_at = null;
@@ -66,5 +62,33 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+     public function quickUpdate(Request $request)
+    {
+        $user = auth()->user();
+
+        $validated = $request->validate([
+            'phone' => 'nullable|string|max:20',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+   
+        if (!empty($validated['phone'])) {
+            $user->phone = $validated['phone'];
+        }
+        if (!empty($validated['location'])) {
+            $user->location = $validated['location'];
+        }
+
+        $user->save();
+
+        if ($request->redirect_to_booking && $request->subject_id) {
+            return redirect()
+                ->route('home.course_details', $request->subject_id)
+                ->with('profile_updated', true);
+        }
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

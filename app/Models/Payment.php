@@ -17,6 +17,7 @@ protected $fillable = [
 'payment_method',
 'status',
 'transaction_id',
+'paypal_order_id',
     ];
 
 public function tutor(){

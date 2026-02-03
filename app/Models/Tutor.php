@@ -26,10 +26,9 @@ class Tutor extends Model
     ];
     protected $dates = ['deleted_at'];
 
-      public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+   public function user() {
+    return $this->belongsTo(User::class)->whereNull('deleted_at');
+}
 
   public function subjects(){
     return $this->belongsToMany(Subject::class, 'subject_tutor', 'tutor_id', 'subject_id')

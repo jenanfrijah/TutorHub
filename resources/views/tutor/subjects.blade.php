@@ -25,15 +25,14 @@
             <th>Price per Hour</th>
             <th>Description</th>
             <th>Actions</th>
-            
         </tr>
     </thead>
-    <tbody>
-      @foreach($tutor->subjects as $subject)
+<tbody>
+@foreach($tutor->subjects as $subject)
 <tr>
     <td>{{ $subject->name }}</td>
     <td>{{ $subject->pivot->price_per_hour ?? 'N/A' }}</td>
-    <td>{{ $subject->description  }}</td>
+    <td>{{ $subject->description ?? '-' }}</td>
     <td>
         <button class="btn btn-sm btn-primary" onclick='openEditModal(@json($subject))'>
             Edit
@@ -47,12 +46,66 @@
     </td>
 </tr>
 @endforeach
-    </tbody>
+</tbody>
+
 </table>
  </div>
  </div>
 </div>
                 
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true"> 
+  <div class="modal-dialog" role="document"> 
+    <div class="modal-content"> 
+      <div class="modal-header"> 
+        <h5 class="modal-title">Add New Subject</h5> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+          <span>&times;</span> 
+        </button> 
+      </div> 
+      <div class="modal-body"> 
+        <form id="addSubjectForm" action="{{ route('tutor.subject_add') }}" method="POST"> 
+          @csrf 
+          <div class="mb-3"> 
+            <label for="subject_name" class="form-label">Subject Name</label> 
+            <select name="name" id="subject_name" class="form-control" required> 
+              <option value="" disabled selected>Select subject</option> 
+              <option value="Arabic">Arabic</option> 
+              <option value="English">English</option> 
+              <option value="Mathematics">Mathematics</option> 
+              <option value="Physics">Physics</option> 
+              <option value="Chemistry">Chemistry</option> 
+              <option value="Biology">Biology</option> 
+              <option value="Computer Science">Computer Science</option> 
+              <option value="Information Technology">Information Technology</option> 
+              <option value="History">History</option> 
+              <option value="Geography">Geography</option> 
+              <option value="Civics">Civics</option> 
+              <option value="Economics">Economics</option> 
+              <option value="Business Studies">Business Studies</option> 
+              <option value="Islamic Studies">Islamic Studies</option> 
+              <option value="Art">Art</option> 
+              <option value="Physical Education">Physical Education</option> 
+            </select> 
+          </div> 
+          <div class="mb-3"> 
+            <label for="price_per_hour" class="form-label">Price per Hour</label> 
+            <input type="number" step="1" name="price_per_hour" class="form-control"> 
+          </div> 
+          <div class="mb-3"> 
+            <label for="description" class="form-label">Description</label> 
+            <textarea name="description" id="" cols="60" rows="auto"></textarea> 
+          </div> 
+          <div class="modal-footer"> 
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> 
+            <button type="submit" class="btn btn-success">Add Subject</button> 
+          </div> 
+        </form> 
+      </div> 
+    </div> 
+  </div> 
+</div>
+
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -63,27 +116,52 @@
           <span>&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
         <form id="editSubjectForm" method="POST" action="{{ route('tutor.subject_update') }}">
           @csrf
           @method('PUT')
+
           <input type="hidden" name="subject_id" id="edit_subject_id">
-          <div class="mb-3">
-              <label>Subject Name</label>
-              <input type="text" name="name" id="edit_subject_name" class="form-control">
-          </div>
 
           <div class="mb-3">
-              <label>Price per Hour</label>
-              <input type="number" step="1" name="price_per_hour" id="edit_subject_price" class="form-control">
+            <label for="edit_subject_name" class="form-label">Subject Name</label>
+            <select name="name" id="edit_subject_name" class="form-control" required>
+              <option value="" disabled>Select subject</option>
+              <option value="Arabic">Arabic</option>
+              <option value="English">English</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Biology">Biology</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="History">History</option>
+              <option value="Geography">Geography</option>
+              <option value="Civics">Civics</option>
+              <option value="Economics">Economics</option>
+              <option value="Business Studies">Business Studies</option>
+              <option value="Islamic Studies">Islamic Studies</option>
+              <option value="Art">Art</option>
+              <option value="Physical Education">Physical Education</option>
+            </select>
           </div>
+
+      
           <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-             <textarea name="description" id="" cols="60" rows="auto"></textarea>
+            <label for="edit_subject_price" class="form-label">Price per Hour</label>
+            <input type="number" step="1" name="price_per_hour" id="edit_subject_price" class="form-control">
           </div>
+
+    
+          <div class="mb-3">
+            <label for="edit_subject_description" class="form-label">Description</label>
+            <textarea name="description" id="edit_subject_description" cols="60" rows="4" class="form-control"></textarea>
+          </div>
+
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
           </div>
         </form>
       </div>
@@ -91,41 +169,6 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add New Subject</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="addSubjectForm" action="{{ route('tutor.subject_add') }}" method="POST">
-          @csrf
-          <div class="mb-3">
-              <label for="subject_name" class="form-label">Subject Name</label>
-              <input type="text" name="name" id="subject_name" class="form-control" placeholder="Enter Subject Name" required>
-          </div>
-
-          <div class="mb-3">
-              <label for="price_per_hour" class="form-label">Price per Hour</label>
-              <input type="number" step="1" name="price_per_hour" class="form-control">
-          </div>
-           <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-             <textarea name="description" id="" cols="60" rows="auto"></textarea>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-success">Add Subject</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -133,6 +176,7 @@ function openEditModal(subject) {
     document.getElementById('edit_subject_id').value = subject.id;
     document.getElementById('edit_subject_name').value = subject.name;
     document.getElementById('edit_subject_price').value = subject.pivot.price_per_hour ?? '';
+    document.getElementById('edit_subject_description').value = subject.description ?? '';
 
     
     $('#editModal').modal('show');

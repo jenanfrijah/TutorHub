@@ -12,14 +12,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Validation\Rules\Password;
+
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function createStudent(): View
+    public function createStudent(Request $request): View
     {
+         if ($request->has('redirect')) {
+            session(['url.intended' => $request->get('redirect')]);
+        }
          return view('auth.register-student');
     }
 
@@ -34,7 +39,10 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => [
+                'confirmed',
+                Password::min(8)->mixedCase()->numbers()->symbols(),
+            ],
             'phone' => 'string',
             'location' => 'string',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -57,6 +65,14 @@ $path = $request->hasFile('profile_image')
 
         auth()->login($user);
 
+        if ($request->has('redirect')) {
+            return redirect($request->input('redirect'));
+        }
+
+        if (session()->has('url.intended')) {
+            $url = session()->pull('url.intended');
+            return redirect($url);
+        }
         return redirect()->route('home.index');
     }
 
@@ -71,7 +87,7 @@ $path = $request->hasFile('profile_image')
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            'phone' => 'required|string',
+            'phone' => 'required|regex:/^[0-9]{8,15}$/',
             'location' => 'required|string',
             'bio' => 'required|string',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -98,6 +114,10 @@ $tutor = Tutor::create([
 ]);
 
         auth()->login($user);
+
+        if ($request->has('redirect')) {
+        return redirect($request->input('redirect'));
+    }
 
         return redirect()->route('tutor.tutor_profile'); 
     }

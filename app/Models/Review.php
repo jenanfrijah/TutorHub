@@ -12,6 +12,7 @@ class Review extends Model
 protected $fillable = [
     'tutor_id',
     'student_id',
+    'request_id',
     'rating',
     'feedback',
 ];
@@ -25,5 +26,8 @@ protected $fillable = [
     }
 
 
-
+   public function request()
+    {
+        return $this->belongsTo(Request::class, 'request_id');
+    }
 }

@@ -14,12 +14,19 @@
   border-color: #5a32a3 !important;
   color: #fff;
 }
+
+  .page-item.active .page-link {
+    background-color: #4C1D95 !important;
+    border-color: #4C1D95 !important;
+    color:white !important;
+}
+
 </style>
 @endsection
 @section('content')
 
 
-  <!-- Page Title -->
+
     <div class="page-title" data-aos="fade">
       <div class="heading">
         <div class="container">
@@ -44,9 +51,7 @@
       </nav>
     </div>
     
-    <!-- End Page Title -->
-
-    <!-- Tutors Section -->
+  
     <section id="trainers" class="section trainers">
 
          <div class="row mb-5 justify-content-center">
@@ -55,5 +60,5 @@
 </div>
       </div>
 
-    </section><!-- /Tutors Section -->
+    </section>
     @endsection

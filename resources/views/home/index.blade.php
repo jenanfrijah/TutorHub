@@ -2,27 +2,50 @@
 
 @section('title', 'Home Page')
 
-@section('content')
+
+
 
 <style>
+
+:root {
+  --primary-purple: #6f42c1;
+  --dark-purple: #5a32a3;
+  --light-purple: #9775fa;
+  --purple-gradient-start: #667eea;
+  --purple-gradient-end: #764ba2;
+}
+
 .btn-purple {
-  --bs-btn-bg: #6f42c1;      
-  --bs-btn-border-color: #6f42c1;
-  --bs-btn-hover-bg: #5a32a3; 
-  --bs-btn-hover-border-color: #5a32a3;
+  --bs-btn-bg: var(--primary-purple);      
+  --bs-btn-border-color: var(--primary-purple);
+  --bs-btn-hover-bg: var(--dark-purple); 
+  --bs-btn-hover-border-color: var(--dark-purple);
   --bs-btn-color: #fff;
 }
 
-a .btn-purple :hover {
-  color: #fff !important;
+
+.section {
+  padding: 80px 0;
 }
 
-</style>
+.section-title {
+  margin-bottom: 50px;
+}
 
-<!-- Hero Section -->
+
+.icon-box i {
+  color: var(--primary-purple) !important;
+}
+
+.features-item i {
+  font-size: 2.5rem;
+}
+</style>
+@section('content')
+
+
 <section id="hero" class="hero section dark-background">
   <img src="{{ asset('assets/home/img/hero1.jpg') }}" alt="" data-aos="fade-in">
-
   <div class="container">
     <h2 data-aos="fade-up" data-aos-delay="100">Find Your Perfect Tutor Today</h2>
     <p data-aos="fade-up" data-aos-delay="200">Connect with expert tutors for personalized learning experiences</p>
@@ -33,339 +56,291 @@ a .btn-purple :hover {
 </section>
 
 
+<section id="why-us" class="section why-us">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-box">
+          <h3>Why Choose Tutor Hub?</h3>
+          <p>
+            Tutor Hub makes it easy to connect with qualified and reliable tutors in different subjects.
+            Our platform is simple to use and designed to support your learning needs.
+          </p>
+          <p>
+            You can explore clear tutor profiles, compare options, and choose the tutor that fits your goals.
+            With Tutor Hub, learning becomes more flexible, effective, and accessible.
+          </p>
+          <div class="text-center mt-4">
+            <a href="{{route('home.about')}}" class="more-btn">
+              <span>Learn More</span> <i class="bi bi-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
 
-<!-- /Counts Section -->
+      <div class="col-lg-8 d-flex align-items-stretch">
+        <div class="row gy-8" data-aos="fade-up" data-aos-delay="200">
 
-    <!-- Why Us Section -->
-    <section id="why-us" class="section why-us">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="why-box">
-              <h3>Why Choose Tutor Hub?</h3>
-              <p>
-Tutor Hub makes it easy to connect with qualified and reliable tutors in different subjects.
-Our platform is simple to use and designed to support your learning needs.
-
-You can explore clear tutor profiles, compare options, and choose the tutor that fits your goals.
-With Tutor Hub, learning becomes more flexible, effective, and accessible.
-              <div class="text-center">
-                <a href="{{route('home.about')}}" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-              </div>
+          <div class="col-xl-4">
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-clipboard-data"></i>
+              <h4>Easy & Efficient Platform</h4>
+              <p>Find tutors, schedule sessions, and learn without any hassle.</p>
             </div>
-          </div><!-- End Why Box -->
+          </div>
 
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300"> 
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-gem"></i>
+              <h4>High Quality Education</h4>
+              <p>Learn from carefully selected tutors who deliver professional and effective teaching.</p>
+            </div>
+          </div>
 
-        <div class="col-xl-4">
-  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-    <i class="bi bi-clipboard-data"></i>
-    <h4>Easy & Efficient Platform</h4>
-    <p>Find tutors, schedule sessions, and learn without any hassle.</p>
-  </div>
-</div><!-- End Icon Box -->
-
-<div class="col-xl-4" data-aos="fade-up" data-aos-delay="300"> 
-  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-    <i class="bi bi-gem"></i>
-    <h4>High Quality Education</h4>
-    <p>Learn from carefully selected tutors who deliver professional and effective teaching.</p>
-  </div>
-</div><!-- End Icon Box -->
-
-<div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-  <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-    <i class="bi bi-inboxes"></i>
-    <h4>All Subjects in One Place</h4>
-    <p>Access a wide range of subjects and find the right tutor for your academic needs.</p>
-  </div>
-</div><!-- End Icon Box -->
-
-
+          <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-inboxes"></i>
+              <h4>All Subjects in One Place</h4>
+              <p>Access a wide range of subjects and find the right tutor for your academic needs.</p>
             </div>
           </div>
 
         </div>
-
       </div>
 
-    </section><!-- /Why Us Section -->
-<!-- Features Section -->
-<section id="features" class="features section">
+    </div>
+  </div>
+</section>
+
+
+<section id="features" class="features section" style="background-color: #f8f9fa;">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Features</h2>
+    <p>What Makes Us Special</p>
+  </div>
 
   <div class="container">
-
     <div class="row gy-4">
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="features-item">
-          <i class="bi bi-search" style="color: #ffbb2c;"></i>
+          <i class="bi bi-search" style="color: #6f42c1;"></i>
           <h3><a href="" class="stretched-link">Find Tutors Easily</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="features-item">
-          <i class="bi bi-clock" style="color: #5578ff;"></i>
+          <i class="bi bi-clock" style="color: #8b5cf6;"></i>
           <h3><a href="" class="stretched-link">Flexible Scheduling</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="features-item">
-          <i class="bi bi-mortarboard" style="color: #e80368;"></i>
+          <i class="bi bi-mortarboard" style="color: #a78bfa;"></i>
           <h3><a href="" class="stretched-link">Qualified Tutors</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
         <div class="features-item">
-          <i class="bi bi-chat-dots" style="color: #e361ff;"></i>
+          <i class="bi bi-chat-dots" style="color: #7c3aed;"></i>
           <h3><a href="" class="stretched-link">Direct Communication</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
         <div class="features-item">
-          <i class="bi bi-shield-check" style="color: #47aeff;"></i>
+          <i class="bi bi-shield-check" style="color: #6d28d9;"></i>
           <h3><a href="" class="stretched-link">Safe & Secure</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
         <div class="features-item">
-          <i class="bi bi-star" style="color: #ffa76e;"></i>
+          <i class="bi bi-star" style="color: #9333ea;"></i>
           <h3><a href="" class="stretched-link">Top Reviews</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
         <div class="features-item">
-          <i class="bi bi-book" style="color: #11dbcf;"></i>
+          <i class="bi bi-book" style="color: #a855f7;"></i>
           <h3><a href="" class="stretched-link">Wide Subject Range</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
         <div class="features-item">
-          <i class="bi bi-camera-video" style="color: #4233ff;"></i>
+          <i class="bi bi-camera-video" style="color: #6f42c1;"></i>
           <h3><a href="" class="stretched-link">Easy Booking</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
         <div class="features-item">
-          <i class="bi bi-people" style="color: #b2904f;"></i>
+          <i class="bi bi-people" style="color: #8b5cf6;"></i>
           <h3><a href="" class="stretched-link">Community Support</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
         <div class="features-item">
-          <i class="bi bi-lightbulb" style="color: #b20969;"></i>
+          <i class="bi bi-lightbulb" style="color: #a78bfa;"></i>
           <h3><a href="" class="stretched-link">Personalized Learning</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
         <div class="features-item">
-          <i class="bi bi-calendar-check" style="color: #ff5828;"></i>
+          <i class="bi bi-calendar-check" style="color: #7c3aed;"></i>
           <h3><a href="" class="stretched-link">Interactive Learning</a></h3>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
         <div class="features-item">
-          <i class="bi bi-trophy" style="color: #29cc61;"></i>
+          <i class="bi bi-trophy" style="color: #6d28d9;"></i>
           <h3><a href="" class="stretched-link">Achieve Goals</a></h3>
         </div>
       </div>
 
     </div>
-
   </div>
-
 </section>
 
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses section">
+<section id="how-it-works" class="section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>How It Works</h2>
+    <p>Get Started in 3 Simple Steps</p>
+  </div>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Courses</h2>
-        <p>Popular Courses</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="{{asset('assets/home/img/course-1.jpg')}}" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Web Development</p>
-                  <p class="price">$169</p>
-                </div>
-
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{{asset('assets/home/img/trainers/trainer-1-2.jpg')}}" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Antonio</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="course-item">
-              <img src="{{asset('assets/home/img/course-2.jpg')}}" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Marketing</p>
-                  <p class="price">$250</p>
-                </div>
-
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{{asset('assets/home/img/trainers/trainer-2-2.jpg')}}" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Lana</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;42
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="course-item">
-              <img src="{{asset('assets/home/img/course-3.jpg')}}" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Content</p>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="{{asset('assets/home/img/trainers/trainer-3-2.jpg')}}" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Brandon</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;20
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;85
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Courses Section -->
-
-    
-   <!-- Tutors Section -->
-    <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Tutors</h2>
-        <p>Popular Tutors</p>
-      </div><!-- End Section Title -->
-<section id="trainers-index" class="section trainers-index ">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <img src="{{asset('assets/home/img/trainers/trainer-1.jpg')}}" class="img-fluid" alt="Tutor Jane Doe">
-          <div class="member-content">
-            <h4>Jane Doe</h4>
-            <span>Mathematics</span>
-            <p>
-              Experienced Math tutor with 5+ years teaching high school and college students. Focused on building strong foundations.
-            </p>
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
+    <div class="row gy-5">
+      
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-center p-4">
+          <div class="icon-box mb-4">
+            <i class="bi bi-person-plus" style="font-size: 4rem; color: #6f42c1;"></i>
           </div>
+          <h4 class="mb-3">1. Create Account</h4>
+          <p class="text-muted">Sign up as a student or tutor in minutes. Fill in your profile and preferences to get started.</p>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-        <div class="member">
-          <img src="{{asset('assets/home/img/trainers/trainer-2.jpg')}}" class="img-fluid" alt="Tutor John Smith">
-          <div class="member-content">
-            <h4>John Smith</h4>
-            <span>English & Literature</span>
-            <p>
-              Passionate English tutor helping students improve reading, writing, and comprehension skills for exams and assignments.
-            </p>
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-center p-4">
+          <div class="icon-box mb-4">
+            <i class="bi bi-search" style="font-size: 4rem; color: #6f42c1;"></i>
           </div>
+          <h4 class="mb-3">2. Find Your Tutor</h4>
+          <p class="text-muted">Browse through qualified tutors, check their profiles, ratings, and reviews to find the perfect match.</p>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-        <div class="member">
-          <img src="{{asset('assets/home/img/trainers/trainer-3.jpg')}}" class="img-fluid" alt="Tutor Alice Lee">
-          <div class="member-content">
-            <h4>Alice Lee</h4>
-            <span>Physics</span>
-            <p>
-              Physics tutor with hands-on teaching approach, making complex topics simple and fun. Works with high school and university students.
-            </p>
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-center p-4">
+          <div class="icon-box mb-4">
+            <i class="bi bi-calendar-check" style="font-size: 4rem; color: #6f42c1;"></i>
           </div>
+          <h4 class="mb-3">3. Book & Learn</h4>
+          <p class="text-muted">Schedule your sessions at your convenience. Learn at your own pace and achieve your academic goals.</p>
         </div>
       </div>
 
     </div>
+  </div>
+</section>
 
+<section id="faq" class="faq section" style="background-color: #f8f9fa;">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>FAQ</h2>
+    <p>Frequently Asked Questions</p>
   </div>
 
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <div class="accordion" id="faqAccordion" data-aos="fade-up">
+          
+          <div class="accordion-item mb-3 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="background-color: #f8f9fa;">
+                How do I book a tutor?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Simply browse our tutor profiles, select a tutor that matches your needs, and click "Book Now". Choose your preferred date and time, and you're all set!
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-3 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                What subjects are available?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We offer tutoring in Mathematics, Physics, Chemistry, Biology, English, Arabic, Computer Science, and more. Check our subjects page for the full list.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-3 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Can I cancel or reschedule a session?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! You can cancel or reschedule up to 24 hours before your session without any penalty. Contact support for assistance.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-3 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                How much does it cost?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Pricing varies by tutor experience and subject. Rates typically range from 10-30 JOD per hour. Check individual tutor profiles for exact pricing.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mb-3 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Are sessions online or in-person?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We offer both! You can choose online sessions via video call or arrange in-person meetings based on tutor availability and your location.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>
 
 
 @endsection
-
-
 
 @section('scripts')
 <script src="https://unpkg.com/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>

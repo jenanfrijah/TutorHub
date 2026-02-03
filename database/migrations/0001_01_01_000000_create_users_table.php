@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['student', 'tutor', 'admin'])->default('student');
 
-
+            
             $table->rememberToken();
             $table->timestamps();
         });
